@@ -47,12 +47,14 @@ optdepends=('texinfo: for help-support in Octave'
             "${MINGW_PACKAGE_PREFIX}-gnuplot: alternative plotting"
             "${MINGW_PACKAGE_PREFIX}-portaudio: audio support")
 source=(https://ftp.gnu.org/gnu/octave/octave-$pkgver.tar.xz{,.sig}
+        "0001-no-namespace-in-extern-C.patch"
         "0002-mk-doc-cache-path.patch"
         "0003-no-community-support.patch"
         "0005-makeinfo-perl.patch")
 validpgpkeys=('DBD9C84E39FE1AAE99F04446B05F05B75D36644B')  # John W. Eaton
 sha256sums=('6f9ad73a3ee4291b6341d6c0f5e5c85d6e0310376e4991b959a6d340b3ffa8a8'
             'SKIP'
+            '2e5f1624bc476b94bfec274e09b4debb3b1b52e43236e98e7a148ac13698bf36'
             'aa5bd559d9774abc0f0c930a606762d1e452cc90278d16d8ae83561c0cae3bf8'
             '14f6afe84529982041e20653a8c146630f598493abbdf5e8d52f0bee80326a5b'
             '2df9666d75bb8dd4f549ec857c75aa3ec64b21fd3c9aa25a0d4127b284ec6822')
@@ -74,6 +76,7 @@ prepare() {
 
   if [[ ${MINGW_PACKAGE_PREFIX} == *-clang-* ]]; then
     apply_patch_with_msg \
+      0001-no-namespace-in-extern-C.patch \
       0003-no-community-support.patch
 
     # We need the patched libtool with Flang specific changes.

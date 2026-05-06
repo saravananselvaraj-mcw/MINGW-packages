@@ -1,0 +1,24 @@
+# HG changeset patch
+# User Markus Mützel <markus.muetzel@gmx.de>
+# Date 1678708756 -3600
+#      Mon Mar 13 13:59:16 2023 +0100
+# Node ID 123c5d78fc9d
+# Parent  4ab90bed411b
+quit.h: Do not declare functions in namespaces inside extern "C" block.
+
+diff -r 4ab90bed411b -r 123c5d78fc9d liboctave/util/quit.h
+--- a/liboctave/util/quit.h	Sat Mar 11 17:22:33 2023 -0800
++++ b/liboctave/util/quit.h	Mon Mar 13 13:59:16 2023 +0100
+@@ -36,7 +36,6 @@
+ #  include <list>
+ #  include <stdexcept>
+ #  include <string>
+-extern "C" {
+ #else
+ #  include <signal.h>
+ #endif
+@@ -200,6 +199,8 @@
+ OCTAVE_END_NAMESPACE(octave)
++extern "C" {
++
+ #endif
