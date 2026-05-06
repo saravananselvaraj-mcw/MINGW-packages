@@ -29,7 +29,8 @@ depends=("${MINGW_PACKAGE_PREFIX}-cc-libs"
          "${MINGW_PACKAGE_PREFIX}-libiconv"
          "${MINGW_PACKAGE_PREFIX}-libsndfile"
          "${MINGW_PACKAGE_PREFIX}-omp"
-         "${MINGW_PACKAGE_PREFIX}-openblas"
+         "${MINGW_PACKAGE_PREFIX}-blas"
+         "${MINGW_PACKAGE_PREFIX}-lapack"
          "${MINGW_PACKAGE_PREFIX}-pcre2"
          "${MINGW_PACKAGE_PREFIX}-qhull"
          "${MINGW_PACKAGE_PREFIX}-qrupdate"
@@ -119,6 +120,8 @@ build() {
     "${_extra_config[@]}" \
     octave_cv_fftw3_threads_lib="-lfftw3_omp" \
     octave_cv_fftw3f_threads_lib="-lfftw3f_omp" \
+    --with-blas="-lblas" \
+    --with-lapack="-llapack" \
     JAVA_HOME=""
 
   PERL5SHELL="bash -l -c" make all
