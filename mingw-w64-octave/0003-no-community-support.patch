@@ -6,16 +6,16 @@
 # Parent  89850bb5eb31f776d527aa14295100be61a1e7b4
 Add note about no community support for CLANG*64 versions.
 
-diff -urN octave-11.1.0/liboctave/version.cc.orig octave-11.1.0/liboctave/version.cc
---- octave-11.1.0/liboctave/version.cc.orig	2026-02-18 18:54:40.000000000 +0100
-+++ octave-11.1.0/liboctave/version.cc	2026-02-23 10:04:59.860669800 +0100
-@@ -69,7 +69,8 @@
-   std::string br = (html ? "<br>\n" : "\n");
+diff -r 89850bb5eb31 -r aaffb33108d3 liboctave/version.cc
+--- a/liboctave/version.cc	Fri Mar 31 18:07:24 2023 +0200
++++ b/liboctave/version.cc	Fri Mar 31 18:26:18 2023 +0200
+@@ -73,7 +73,8 @@
+   // --version, the version number should follow the last space on the
+   // line.
  
-   return "GNU Octave (" OCTAVE_CANONICAL_HOST_TYPE ") version " OCTAVE_VERSION + br
--         + OCTAVE_COPYRIGHT;
-+         + OCTAVE_COPYRIGHT + br + br
-+         + "This version is not supported by the Octave community.";
+-  return "GNU Octave, version " OCTAVE_VERSION "\n" OCTAVE_COPYRIGHT;
++  return "GNU Octave, version " OCTAVE_VERSION "\n" OCTAVE_COPYRIGHT
++         "\n\nThis version is not supported by the Octave community.\n";
  }
  
  std::string
